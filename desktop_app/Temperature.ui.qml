@@ -1,6 +1,6 @@
 import QtQuick 2.4
-import QtQuick.Timeline 1.0
 
+//import QtQuick.Timeline 1.0
 Item {
     width: 200
     height: 230
@@ -68,151 +68,154 @@ Item {
         }
     }
 
-    Timeline {
-        id: timeline
-        currentFrame: currentframe
-        endFrame: 65
-        startFrame: -20
-        enabled: true
+    //    Timeline {
+    //        id: timeline
+    //        currentFrame: currentframe
+    //        endFrame: 65
+    //        startFrame: -20
+    //        enabled: true
 
-        KeyframeGroup {
-            target: temprature
-            property: "value"
-            Keyframe {
-                frame: -20
-                value: -20
-            }
+    //        KeyframeGroup {
+    //            target: temprature
+    //            property: "value"
+    //            Keyframe {
+    //                frame: -20
+    //                value: -20
+    //            }
 
-            Keyframe {
-                frame: -15
-                value: -15
-            }
+    //            Keyframe {
+    //                frame: -15
+    //                value: -15
+    //            }
 
-            Keyframe {
-                frame: -10
-                value: -10
-            }
+    //            Keyframe {
+    //                frame: -10
+    //                value: -10
+    //            }
 
-            Keyframe {
-                frame: 0
-                value: 0
-            }
+    //            Keyframe {
+    //                frame: 0
+    //                value: 0
+    //            }
 
-            Keyframe {
-                frame: 15
-                value: 15
-            }
+    //            Keyframe {
+    //                frame: 15
+    //                value: 15
+    //            }
 
-            Keyframe {
-                frame: 20
-                value: 20
-            }
+    //            Keyframe {
+    //                frame: 20
+    //                value: 20
+    //            }
 
-            Keyframe {
-                frame: 25
-                value: 25
-            }
+    //            Keyframe {
+    //                frame: 25
+    //                value: 25
+    //            }
 
-            Keyframe {
-                frame: 30
-                value: 30
-            }
+    //            Keyframe {
+    //                frame: 30
+    //                value: 30
+    //            }
 
-            Keyframe {
-                frame: 40
-                value: 40
-            }
+    //            Keyframe {
+    //                frame: 40
+    //                value: 40
+    //            }
 
-            Keyframe {
-                frame: 45
-                value: 45
-            }
+    //            Keyframe {
+    //                frame: 45
+    //                value: 45
+    //            }
 
-            Keyframe {
-                frame: 50
-                value: 50
-            }
+    //            Keyframe {
+    //                frame: 50
+    //                value: 50
+    //            }
 
-            Keyframe {
-                frame: 59
-                value: 59
-            }
+    //            Keyframe {
+    //                frame: 59
+    //                value: 59
+    //            }
 
-            Keyframe {
-                frame: 65
-                value: 65
-            }
-        }
-        KeyframeGroup {
-            target: temprature
-            property: "progressColor"
-            Keyframe {
-                frame: -20
-                value: "#4ccdfa"
-            }
+    //            Keyframe {
+    //                frame: 65
+    //                value: 65
+    //            }
+    //        }
+    //        KeyframeGroup {
+    //            target: temprature
+    //            property: "progressColor"
+    //            Keyframe {
+    //                frame: -20
+    //                value: "#4ccdfa"
+    //            }
 
-            Keyframe {
-                frame: -15
-                value: "#51cff0"
-            }
+    //            Keyframe {
+    //                frame: -15
+    //                value: "#51cff0"
+    //            }
 
-            Keyframe {
-                frame: -10
-                value: "#4ccbfb"
-            }
+    //            Keyframe {
+    //                frame: -10
+    //                value: "#4ccbfb"
+    //            }
 
-            Keyframe {
-                frame: 0
-                value: "#5dd7e1"
-            }
+    //            Keyframe {
+    //                frame: 0
+    //                value: "#5dd7e1"
+    //            }
 
-            Keyframe {
-                frame: 15
-                value: "#61d9d8"
-            }
+    //            Keyframe {
+    //                frame: 15
+    //                value: "#61d9d8"
+    //            }
 
-            Keyframe {
-                frame: 20
-                value: "#6fe3be"
-            }
+    //            Keyframe {
+    //                frame: 20
+    //                value: "#6fe3be"
+    //            }
 
-            Keyframe {
-                frame: 25
-                value: "#83f09c"
-            }
+    //            Keyframe {
+    //                frame: 25
+    //                value: "#83f09c"
+    //            }
 
-            Keyframe {
-                frame: 30
-                value: "#caf665"
-            }
+    //            Keyframe {
+    //                frame: 30
+    //                value: "#caf665"
+    //            }
 
-            Keyframe {
-                frame: 40
-                value: "#e0f486"
-            }
+    //            Keyframe {
+    //                frame: 40
+    //                value: "#e0f486"
+    //            }
 
-            Keyframe {
-                frame: 45
-                value: "#f5d965"
-            }
+    //            Keyframe {
+    //                frame: 45
+    //                value: "#f5d965"
+    //            }
 
-            Keyframe {
-                frame: 50
-                value: "#febe63"
-            }
+    //            Keyframe {
+    //                frame: 50
+    //                value: "#febe63"
+    //            }
 
-            Keyframe {
-                frame: 59
-                value: "#fe725e"
-            }
+    //            Keyframe {
+    //                frame: 59
+    //                value: "#fe725e"
+    //            }
 
-            Keyframe {
-                frame: 65
-                value: "#ff585d"
-            }
-        }
-    }
+    //            Keyframe {
+    //                frame: 65
+    //                value: "#ff585d"
+    //            }
+    //        }
+    //    }
 }
 
-
-
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

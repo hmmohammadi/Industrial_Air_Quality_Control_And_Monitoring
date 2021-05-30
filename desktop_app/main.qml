@@ -59,6 +59,7 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
 
@@ -84,6 +85,7 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = true
+                    charts.visible = false
                 }
             }
         }
@@ -109,6 +111,7 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
         }
@@ -133,6 +136,7 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
         }
@@ -158,6 +162,7 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = true
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
         }
@@ -184,6 +189,7 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
         }
@@ -208,6 +214,7 @@ Window {
                     chart_o3.visible = true
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
 
@@ -233,11 +240,8 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
 
-
-                    //                    console.log(air.pm25s)
-                    //                    chart_line.chartData = ChartsData.show("pm25s")
-                    //                    chart_line.chartData = air.
                 }
             }
         }
@@ -269,15 +273,119 @@ Window {
                     chart_o3.visible = false
                     chart_no2.visible = false
                     chart_cho2.visible = false
+                    charts.visible = false
                 }
             }
 
         }
         ///////////////////////////////  Charts ///////////////////////////////////////////
+        Chart {
+            id: charts
+            width: chart_width
+            visible: true
+            height: chart_height
+            chartType: 'line'
+            chartData: { return {
+                    labels:  ChartsData.show('time'),
+                    datasets: [{
+                            label: 'Temprature',
+                            fill: false,
+                            backgroundColor:  "rgba(220,220,220,0.2)",
+                            borderColor: 'rgba(128,192,255,255)',
+                            data: air.temps,
+                        }, {
+                            label: 'O3',
+                            fill: false,
+                            backgroundColor: "rgb(226, 137, 242)",
+                            borderColor: "rgb(226, 137, 242)",
+                            //                            borderDash: [2, 2],
+                            data: air.o3s,
+                        }, {
+                            label: 'PM2_5',
+                            backgroundColor:  "rgb(31, 141, 237)",
+                            borderColor:  "rgb(31, 141, 237)",
+                            data: air.pm25s,
+                            fill: false,
+                        }, {
+                            label: 'NO2',
+                            fill: false,
+                            backgroundColor: "rgb(133, 92, 248)",
+                            borderColor: "rgb(133, 92, 248)",
+                            //                            borderDash: [5, 5],
+                            data: air.no2s,
+                        }, {
+                            label: 'Co',
+                            fill: false,
+                            backgroundColor: "rgb(165, 166, 246)",
+                            borderColor:"rgb(165, 166, 246)",
+                            //                            borderDash: [5, 5],
+                            data: air.cos,
+                        }, {
+                            label: 'Humidity',
+                            fill: false,
+                            backgroundColor: "rgb(96, 125, 139)",
+                            borderColor: "rgb(96, 125, 139)",
+                            //                            borderDash: [5, 5],
+                            data: air.hums,
+                        }
+                        , {
+                            label: 'MP1_0',
+                            fill: false,
+                            backgroundColor: "rgb(66, 133, 244)",
+                            borderColor: "rgb(66, 133, 244)",
+                            //                            borderDash: [5, 5],
+                            data: air.pm10s,
+                        }, {
+                            label: 'COH2',
+                            fill: false,
+                            backgroundColor: "rgb(38, 50, 56)",
+                            borderColor: "rgb(38, 50, 56)",
+                            data: air.cho2s,
+                        }
+                    ]
+                }
+            }
+
+
+            chartOptions: {return {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Gas Charts'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Hour'
+                                }
+                            }],
+                        yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+                            }]
+                    }
+                }
+            }
+        }
+
         QChartJs {
             id: chart_temp
             width: chart_width
-            visible: true
+            visible: false
             height: chart_height
             chartType: ChartTypes.QChartJSTypes.LINE
             chartData: ChartsData.tempChartData

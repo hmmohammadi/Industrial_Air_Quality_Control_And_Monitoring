@@ -65,16 +65,19 @@ var tempChartData = {
     labels: show('time'),
     datasets: [{
         fillColor : "rgba(220,220,220,0.2)",
+//            fill: true,
+
         strokeColor : "rgba(220,220,220,1)",
         pointColor : "rgba(220,220,220,1)",
         pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(220,220,220,1)",
+//        pointHighlightFill : "#fff",
+//        pointHighlightStroke : "rgba(220,220,220,1)",
         data: air.temps
 
         }
-     ]
+    ],
 }
+
 
 var co2ChartData = {
     labels: show('time'),
