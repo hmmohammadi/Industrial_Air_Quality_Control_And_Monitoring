@@ -1,2 +1,2 @@
-# Industrial_Air_Quality_Control_And_Monitoring
+# Industrial Air Quality Control And Monitoring
 A desktop and flutter based mobile app for industrial air quality control and monitoring
