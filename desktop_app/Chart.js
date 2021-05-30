@@ -2741,6 +2741,7 @@ function newChartInstance(context, data, options, chartType) {
                     stepValue: this.options.scaleStepWidth,
                     min: this.options.scaleStartValue,
                     max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+//                    max: this.options.maxValue
                 });
             }
 

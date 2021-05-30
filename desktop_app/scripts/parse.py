@@ -1,5 +1,6 @@
 import pymongo
 from flask import Flask,jsonify,request, json
+from datetime import datetime
 
 
 myclient = pymongo.MongoClient('mongodb://159.65.115.118:27017/', username='admin', password='bitirme:)')
@@ -35,10 +36,17 @@ def main():
         no2.append(i['NO2'])
         time.append(i['time'])
     
-    print(o3)
-    print(no2)
-    print(co)
+    # print(o3)
+    # print(no2)
+    # print(co)
     print(humidity)
+
+    print(time[0].split('T')[1].split('.')[0][:-3])
     
 if __name__=="__main__":
     main()
+    # import time
+
+    # t = datetime.now()
+
+    # print(t)

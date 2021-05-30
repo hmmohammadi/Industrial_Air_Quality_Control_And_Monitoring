@@ -1,22 +1,68 @@
-// QMLChartData.js ---
-//
-// Author: Julien Wintz
-// Created: Thu Feb 13 23:43:13 2014 (+0100)
-// Version:
-// Last-Updated: Fri Sep 26
-//           By: Shuirna Wang
-//
+function randomScalingFactor() {
+        return Math.random().toFixed(1);
+}
 
-// Change Log:
-// update all options
 
-// /////////////////////////////////////////////////////////////////
-// Line Chart Data Sample
-// /////////////////////////////////////////////////////////////////
-var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+function show(name) {
 
-var ChartLineData = {
-      labels: ["January","February","March","April","May","June","July","January","February","March","April","May","June","July"],
+    if (name == "time"){
+        var times = []
+        for(var i=0; i < air.times.length; i++) {
+            console.log(air.times[i].split("T")[1].split(".")[0])
+            times.push(air.times[i].split("T")[1].split(".")[0])
+
+        }
+
+        return times
+    }
+   else if (name == "pm25s") {
+        var pm25s = {
+        labels: show('time'),
+            datasets: [{
+                fillColor : "rgba(220,220,220,0.2)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(220,220,220,1)",
+                data: air.pm25s
+
+                }
+             ]
+        }
+
+        return pm25s
+    }
+
+
+}
+
+var moptions = {
+    scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                beginAtZero: true,
+                min: 0,
+                max: 10,
+                stepSize: 1
+            }
+        }]
+    }
+};
+
+var Options = {
+//    scaleBeginAtZero: true,
+//    scaleSteps: 0.01
+//    scaleStartValue: 50,
+//    scaleStepWidth: 1,
+//    maxValue: 50
+
+};
+
+///////////////////// Chart Datas //////////////////////////
+var tempChartData = {
+    labels: show('time'),
     datasets: [{
         fillColor : "rgba(220,220,220,0.2)",
         strokeColor : "rgba(220,220,220,1)",
@@ -24,200 +70,128 @@ var ChartLineData = {
         pointStrokeColor : "#fff",
         pointHighlightFill : "#fff",
         pointHighlightStroke : "rgba(220,220,220,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        data: air.temps
 
-    }/*, {
-        fillColor: "rgba(151,187,205,0.5)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#ffffff",
+        }
+     ]
+}
+
+var co2ChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(165, 166, 246)",
+        strokeColor : "rgb(116, 89, 217)",
+        pointColor : "rgb(116, 89, 217)",
+        pointStrokeColor : "#fff",
         pointHighlightFill : "#fff",
         pointHighlightStroke : "rgba(220,220,220,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-    }*/]
-}
+        data: air.co2s
 
-// /////////////////////////////////////////////////////////////////
-// Polar Chart Data Sample
-// /////////////////////////////////////////////////////////////////
-var ChartPolarData = [
-        {
-            value: 300,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            label: "Red"
-        },
-        {
-            value: 50,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Green"
-        },
-        {
-            value: 100,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Yellow"
-        },
-        {
-            value: 40,
-            color: "#949FB1",
-            highlight: "#A8B3C5",
-            label: "Grey"
-        },
-        {
-            value: 120,
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "Dark Grey"
         }
-
-    ];
-
-// /////////////////////////////////////////////////////////////////
-// Radar Chart Data Sample
-// /////////////////////////////////////////////////////////////////
-
-var ChartRadarData = {
-      labels: ["Eating","Drinking","Sleeping","Designing","Coding","Partying","Running"],
-      datasets: [{
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                data: [65,59,90,81,56,55,40]
-            }, {
-                fillColor: "rgba(151,187,205,0.5)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                data: [28,48,40,19,96,27,100]
-            }]
+     ]
 }
 
-// /////////////////////////////////////////////////////////////////
-// Pie Chart Data Sample
-// /////////////////////////////////////////////////////////////////
+var pm25ChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(31, 141, 237)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.pm25s
 
-var ChartPieData = [
-            {
-                value: 300,
-                color:"#F7464A",
-                highlight: "#FF5A5E",
-                label: "Red"
-            },
-            {
-                value: 50,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Green"
-            },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            },
-            {
-                value: 40,
-                color: "#949FB1",
-                highlight: "#A8B3C5",
-                label: "Grey"
-            },
-            {
-                value: 120,
-                color: "#4D5360",
-                highlight: "#616774",
-                label: "Dark Grey"
-            }
-
-        ];
-
-// /////////////////////////////////////////////////////////////////
-// Doughnut Chart Data Sample
-// /////////////////////////////////////////////////////////////////
-
-var ChartDoughnutData = [
-            {
-                value: 300,
-                color:"#F7464A",
-                highlight: "#FF5A5E",
-                label: "Red"
-            },
-            {
-                value: 50,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Green"
-            },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            },
-            {
-                value: 40,
-                color: "#949FB1",
-                highlight: "#A8B3C5",
-                label: "Grey"
-            },
-            {
-                value: 120,
-                color: "#4D5360",
-                highlight: "#616774",
-                label: "Dark Grey"
-            }
-]
-
-// /////////////////////////////////////////////////////////////////
-// Bar Chart Data Sample
-// /////////////////////////////////////////////////////////////////
-
-var ChartBarData = {
-      labels: ["January","February","March","April","May","June","July","January","February","March","April","May","June","July"],
-      datasets : [/*
-            {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,0.8)",
-                highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-            },*/
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,0.8)",
-                highlightFill : "rgba(151,187,205,0.75)",
-                highlightStroke : "rgba(151,187,205,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-            }
-    ]
-}
-
-var StackedBarData = {
-    labels : ["January","February","March","April","May","June","July"],
-    datasets : [
-        {
-            fillColor : "rgba(220,220,220,0.5)",
-            strokeColor : "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-        },
-        {
-            fillColor : "rgba(151,187,205,0.5)",
-            strokeColor : "rgba(151,187,205,0.8)",
-            highlightFill : "rgba(151,187,205,0.75)",
-            highlightStroke : "rgba(151,187,205,1)",
-            data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-        },
-        {
-            fillColor : "rgba(240,73,73,0.5)",
-            strokeColor : "rgba(240,73,73,0.8)",
-            highlightFill : "rgba(240,73,73,0.75)",
-            highlightStroke : "rgba(240,73,73,1)",
-            data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
         }
-    ]
+     ]
+}
+
+var o3ChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(226, 137, 242)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.o3s
+
+        }
+     ]
+}
+var pm10ChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(66, 133, 244)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.pm10s
+
+        }
+     ]
+}
+
+var no2ChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(133, 92, 248)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.no2s
+
+        }
+     ]
+}
+
+var humChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(96, 125, 139)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.hums
+
+        }
+     ]
+}
+
+var cho2ChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(38, 50, 56)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.cho2s
+
+        }
+     ]
+}
+
+var coChartData = {
+    labels: show('time'),
+    datasets: [{
+        fillColor : "rgb(165, 166, 246)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : "rgba(220,220,220,1)",
+        data: air.cos
+
+        }
+     ]
 }
 

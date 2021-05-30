@@ -9,7 +9,7 @@ import time
 '''
 
 def api():
-    key = "secret"
+    key = "b4c46ad4e4a05833c427922abb06c49d"
     lat = 50
     lon = 50
     url = f"https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={key}"

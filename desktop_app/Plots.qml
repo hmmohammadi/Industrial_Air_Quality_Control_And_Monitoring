@@ -1,177 +1,115 @@
-import QtQuick 2.4
-//import "."
-import QtQuick 2.15
-import QtQuick.Controls 2.12
-import QtCharts 2.3
-
-Item {
-    width: 640
-    height: 480
-
-    property color tickLabelColor: "#90989d"
+import QtQuick 2.0
+import QtQuick.Window 2.0
+import "Charts.js" as Chart
+import "QMLChartData.js" as ChartsData
 
 
-    property color tickLabelTransparent: "#0090989d" // transparent version of greyDark1
-    property int transitionDuration: 1000
-    property bool enableBehaviors: true
-    property int displayedData: 0 // switches in the middle of a transition animation
+//function randomScalingFactor() {
+//        return Math.random().toFixed(1);
+//}
+Rectangle
+ {
+     width: 800
+     height: 480
+    Item {
+//        width: 400
+//        height: 400
+//        anchors.fill: parent
+        Chart{
 
-    ////////////////////////////////////////////////////////////////////////////////
+//            anchors.centerIn: parent
+//            anchors {
+////                left: parent.horizontalCenter
+////                top: parent.verticalCenter
+////                right: parent.right
+////                bottom: parent.bottom
+//            }
+            chartType: 'line'
 
-    SequentialAnimation {
-        id: toYear
-        ParallelAnimation {
-            ScriptAction {
-                script: {
-                    resetBarValues()
-                    axisX.labelsColor = tickLabelTransparent
-                    axisY.labelsColor = tickLabelTransparent
+            chartData: { return {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                            label: 'Filled',
+                            fill: true,
+                            backgroundColor: 'rgba(192,222,255,0.3)',
+                            borderColor: 'rgba(128,192,255,255)',
+                            data: [
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor()
+                            ],
+                        }, {
+                            label: 'Dashed',
+                            fill: false,
+                            backgroundColor: 'rgba(0,0,0,0)',
+                            borderColor: '#009900',
+                            borderDash: [5, 5],
+                            data: [
+                               ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor()
+                            ],
+                        }, {
+                            label: 'Filled',
+                            backgroundColor: 'rgba(0,0,0,0)',
+                            borderColor: '#990000',
+                            data: [
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor(),
+                                ChartsData.randomScalingFactor()
+                            ],
+                            fill: false,
+                        }]
                 }
             }
-            PauseAnimation {
-                duration: transitionDuration
-            }
-        }
-        ScriptAction {
-            script: {
-                enableBehaviors = false
-                displayedData = 1
-                axisY.min = 10
-                axisY.max = 100
-                resetBarValues()
-                enableBehaviors = true
-            }
-        }
-        ParallelAnimation {
-            ScriptAction {
-                script: {
-                    bsv1.value = 70
-                    bsv2.value = 50
-                    bsv3.value = 55
-                    bsv4.value = 57
-                    bsv5.value = 35
-                    bsv6.value = 15
-                    axisX.labelsColor = tickLabelColor
-                    axisY.labelsColor = tickLabelColor
+
+            chartOptions: {return {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Chart.js Line Chart'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Month'
+                                }
+                            }],
+                        yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+                            }]
+                    }
                 }
             }
-            PauseAnimation {
-                duration: transitionDuration
-            }
         }
+
     }
 
-    SequentialAnimation {
-        id: toMonth
-        ParallelAnimation {
-            ScriptAction {
-                script: {
-                    resetBarValues()
-                    axisX.labelsColor = tickLabelTransparent
-                    axisY.labelsColor = tickLabelTransparent
-                }
-            }
-            PauseAnimation {
-                duration: transitionDuration
-            }
-        }
-        ScriptAction {
-            script: {
-                enableBehaviors = false
-                displayedData = 0
-                axisY.min = 1
-                axisY.max = 4
-                resetBarValues()
-                enableBehaviors = true
-            }
-        }
-        ParallelAnimation {
-            ScriptAction {
-                script: {
-                    bsv1.value = 2.6
-                    bsv2.value = 2.1
-                    bsv3.value = 1.5
-                    bsv4.value = 1.7
-                    bsv5.value = 1.95
-                    bsv6.value = 1.55
-                    axisX.labelsColor = tickLabelColor
-                    axisY.labelsColor = tickLabelColor
-                }
-            }
-            PauseAnimation {
-                duration: transitionDuration
-            }
-        }
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    BackgroundForm {
-        ChartView {
-            id: bar
-            anchors.fill: parent
-
-            //                        margins.left: Theme.statsViewChartLeftMargin
-            //                        margins.right: Theme.statsViewChartRightMargin
-            //                        margins.bottom: Theme.statsViewChartBottomMargin
-            //                        margins.top: Theme.statsViewChartTopMargin
-
-            backgroundColor: "#f2f4f5"
-            BarSeries {
-                name: "BarSeries"
-
-                axisX: BarCategoryAxis {
-                    id: axisX
-                    gridVisible: false
-                    lineVisible: false
-                    labelsFont.pixelSize: 20
-                    labelsColor: tickLabelColor
-                    Behavior on labelsColor { ColorAnimation { duration: transitionDuration } }
-
-                    //                                                    BarCategoryValue { value: displayedData ? qsTr("Jan") : qsTr("05/11") }
-                    //                                                    BarCategoryValue { value: displayedData ? qsTr("Feb") : qsTr("05/12") }
-                    //                                                    BarCategoryValue { value: displayedData ? qsTr("Mar") : qsTr("05/13") }
-                    //                                                    BarCategoryValue { value: displayedData ? qsTr("Apr") : qsTr("05/14") }
-                    //                                                    BarCategoryValue { value: displayedData ? qsTr("May") : qsTr("05/15") }
-//                                                                        BarCategoryValue { value: displayedData ? qsTr("Jun") : qsTr("05/16") }
-                }
-
-                                axisY: ValueAxis {
-                                             id: axisY
-                                             min: 1.0
-                                             max: 4.0
-                                             tickCount: 4
-                                             gridLineColor: "#dedfe0"
-                                             lineVisible: false
-                                             labelsFont.pixelSize: 20
-                                             labelsColor: tickLabelColor
-                                             labelFormat: "%d kWh"
-                                             Behavior on labelsColor { ColorAnimation { duration: transitionDuration } }
-                                         }
-
-
-
-                BarSet {
-                    values: [2, 2, 3]
-                    label: "Set1"
-                    Behavior on values { enabled: enableBehaviors; NumberAnimation { duration: transitionDuration } }
-
-                }
-
-                BarSet {
-                    values: [5, 1, 2]
-                    label: "Set2"
-                    Behavior on values { enabled: enableBehaviors; NumberAnimation { duration: transitionDuration } }
-
-                }
-
-                BarSet {
-                    values: [3, 5, 8]
-                    label: "Set3"
-                    Behavior on values { enabled: enableBehaviors; NumberAnimation { duration: transitionDuration } }
-
-                }
-            }
-        }
-    }
 }

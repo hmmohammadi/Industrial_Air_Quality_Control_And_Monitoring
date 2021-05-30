@@ -43,11 +43,10 @@ class Stats(object):
         self.no2 = self.response['no2']
         self.co = self.response['co']
         self.o3 = self.response['o3']
+        self.pm1_0 = self.response['pm1_0']
+        self.time = self.response['time']
         self.pm2_5 = self.response['pm2_5']
         self.time = self.response['time']
-        self.pm2_5 = self.response['pm1_0']
-        
-
 
 
 if __name__=="__main__":
