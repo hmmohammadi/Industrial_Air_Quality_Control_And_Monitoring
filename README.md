@@ -2,7 +2,7 @@
 
 ### project authors
 
-Mohamed Traore 
-Mohammadi Hossein
-Muhammed Ensarullah Yurteri 
-Muhammet Faruk Erem
+- Mohamed Traore 
+- Mohammadi Hossein
+- Muhammed Ensarullah Yurteri 
+- Muhammet Faruk Erem
