@@ -1,0 +1,14 @@
+Automat==0.8.0
+bcrypt==3.2.0
+Flask-Bcrypt==0.7.1
+Flask-Cors==3.0.10
+pymongo==3.11.3
+pyOpenSSL==19.0.0
+PyYAML==5.3.1
+requests==2.22.0
+requests-unixsocket==0.2.0
+SecretStorage==2.3.1
+service-identity==18.1.0
+simplejson==3.16.0
+urllib3==1.25.8
+pika

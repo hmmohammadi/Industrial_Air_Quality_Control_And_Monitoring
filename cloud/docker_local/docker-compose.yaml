@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  database:
+    image: "mongo"
+    container_name: "CONTAINER_NAME"
+    environment:
+      MONGO_INITDB_DATABASE: DATABASE_NAME
+      MONGO_INITDB_ROOT_USERNAME: USER_NAME
+      MONGO_INITDB_ROOT_PASSWORD: SECRET
+    volumes:
+    ## ro stands for read-only
+    - ./init_mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    - ./mongo_volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'

@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  rabbitmq:
+    restart: always
+    image: 'docker.io/bitnami/rabbitmq:3.8-debian-10'
+    command: "/bin/bash -c \"rabbitmq-plugins enable rabbitmq_mqtt; rabbitmq-plugins enable rabbitmq_management; rabbitmq-plugins enable rabbitmq_web_mqtt; rabbitmq-plugins enable rabbitmq_amqp1_0;  rabbitmq-server\""
+    ports:
+      - '4369:4369'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+      - '1883:1883'
+      - '15675:15675'
+    environment:
+      - RABBITMQ_USERNAME=user
+      - RABBITMQ_PASSWORD=password
+    volumes:
+      - 'rabbitmq_data:/bitnami'
+
+
+  mongodb:
+    image: mongo:4.2
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: bitirme:)
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+
+volumes:
+  rabbitmq_data:
+    driver: local
+  mongodb_data_container:
+    driver: local
