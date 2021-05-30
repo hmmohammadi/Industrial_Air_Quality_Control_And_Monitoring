@@ -1,2 +1,8 @@
 # Industrial Air Quality Control And Monitoring
-A desktop, and flutter based mobile app for industrial air quality control and monitoring
+
+### project authors
+
+Mohamed Traore 
+Mohammadi Hossein
+Muhammed Ensarullah Yurteri 
+Muhammet Faruk Erem
