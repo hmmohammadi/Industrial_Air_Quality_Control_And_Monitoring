@@ -29,37 +29,48 @@ class _VeriGosterState extends State<VeriGoster> {
       builder: (context, snapshot) {
         var data;
         var limit;
+        var birim;
         // dynamic x = snapshot.data;
         if (snapshot.hasData) {
           if (widget.sensor == "pm2_5") {
             data = snapshot.data.pm2_5;
             limit = 1000;
+            birim="μg/m3";
           } else if (widget.sensor == "co2") {
             data = snapshot.data.co2;
             limit = 5000;
+            birim=" PPM";
           } else if (widget.sensor == "voc") {
             data = snapshot.data.voc;
             limit = 3;
+            birim="  Grade";
           } else if (widget.sensor == "temp") {
             data = snapshot.data.temp;
             limit = 65;
+            birim=" ℃";
           } else if (widget.sensor == "cho2") {
             data = snapshot.data.cho2;
             limit = 6.250;
+            birim="  mg/m3";
           } else if (widget.sensor == "co") {
             data = snapshot.data.co;
             limit = 500;
+            birim="  PPM";
           } else if (widget.sensor == "o3") {
             data = snapshot.data.o3;
             limit = 10;
+            birim=" PPM";
           } else if (widget.sensor == "no2") {
             data = snapshot.data.no2;
             limit = 9.9;
+            birim=" PPM";
           } else if (widget.sensor == "humidity") {
             data = snapshot.data.humidity;
             limit = 100;
+            birim=" RH";
           }
           double percentage =(double.parse(data)/limit)*100;
+          percentage = percentage.roundToDouble();
          double progress= percentage/100;
           return Container(
             decoration: BoxDecoration(
@@ -113,11 +124,14 @@ class _VeriGosterState extends State<VeriGoster> {
                         fontSize: 25.0,
                       ),
                     ),
+                    Text(data+" "+birim,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                      ),)
                   ],
                 ),
-                Text(data),
-                Text(widget.sensor.toUpperCase()),
-                Text(limit.toString())
+
               ],
             ),
           );
@@ -126,7 +140,16 @@ class _VeriGosterState extends State<VeriGoster> {
         }
 
         // By default, show a loading spinner.
-        return CircularProgressIndicator();
+        return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                    "https://cdn.wallpapersafari.com/55/58/Mt3QVP.gif"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child:Container(height:MediaQuery.of(context).size.height / 6, child: CircularProgressIndicator(),),
+            );
       },
     );
   }

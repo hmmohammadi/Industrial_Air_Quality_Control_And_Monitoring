@@ -12,18 +12,19 @@ class RoomSettingsChooserPage extends StatefulWidget {
 class _RoomSettingsChooserPageState extends State<RoomSettingsChooserPage>
     with SingleTickerProviderStateMixin {
   TabController _controller;
-  int _index;
+int _index;
 
   @override
   void initState() {
     super.initState();
     _controller = new TabController(length: 9, vsync: this);
-    _index = 0;
+    _index= 1;
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: _index,
         length: 9,
         child: Scaffold(
           resizeToAvoidBottomInset: true,
